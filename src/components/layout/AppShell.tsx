@@ -109,87 +109,93 @@ export const AppShell = () => {
             </div>
           </div>
 
-          {/* Hero */}
-          <div className="relative mx-auto w-full max-w-screen-2xl px-4 pt-6">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="relative overflow-hidden rounded-xl border shadow-elegant"
-            >
-              <img src={heroBanner} alt="Plano de fundo do launcher com estilo futurista" className="h-48 w-full object-cover" loading="lazy" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-between p-6">
-                <div className="space-y-1">
-                  <h2 className="text-lg font-semibold">Temporada 5 — disponível agora!</h2>
-                  <p className="text-sm text-muted-foreground">Novas aventuras, desempenho otimizado e muito mais.</p>
-                </div>
-                <Button variant="hero" className="hover-scale">Saiba mais</Button>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Content with animated section switch */}
+          {/* Main grid with aside */}
           <div className="mx-auto w-full max-w-screen-2xl px-4 py-6">
-            <AnimatePresence mode="wait">
-              {active === "home" && (
-                <motion.div key="home" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }}>
-                  <HomeSection />
+            <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_320px]">
+              {/* Main content */}
+              <div>
+                {/* Hero */}
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="relative overflow-hidden rounded-xl border shadow-elegant"
+                >
+                  <img src={heroBanner} alt="Plano de fundo do launcher com estilo futurista" className="h-48 w-full object-cover" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+                  <div className="absolute inset-0 flex items-center justify-between p-6">
+                    <div className="space-y-1">
+                      <h2 className="text-lg font-semibold">Temporada 5 — disponível agora!</h2>
+                      <p className="text-sm text-muted-foreground">Novas aventuras, desempenho otimizado e muito mais.</p>
+                    </div>
+                    <Button variant="hero" className="hover-scale">Saiba mais</Button>
+                  </div>
                 </motion.div>
-              )}
-              {active === "play" && (
-                <motion.div key="play" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.98 }} transition={{ duration: 0.25 }}>
-                  <PlaceholderSection title="Play" description="Escolha o perfil e inicie sua sessão com um clique." />
-                </motion.div>
-              )}
-              {active === "servers" && (
-                <motion.div key="servers" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.25 }}>
-                  <PlaceholderSection title="Servers" description="Navegue pelos seus servidores favoritos e junte-se rapidamente." />
-                </motion.div>
-              )}
-              {active === "mods" && (
-                <motion.div key="mods" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }}>
-                  <PlaceholderSection title="Mods" description="Gerencie e atualize seus mods com facilidade." />
-                </motion.div>
-              )}
-              {active === "resources" && (
-                <motion.div key="resources" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }}>
-                  <PlaceholderSection title="Resource Packs" description="Aplique pacotes para personalizar texturas e sons." />
-                </motion.div>
-              )}
-              {active === "achievements" && (
-                <motion.div key="achievements" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }}>
-                  <PlaceholderSection title="Achievements" description="Veja seu progresso e conquistas mais recentes." />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
 
-          {/* Right rail */}
-          <aside className="fixed right-0 top-14 hidden h-[calc(100svh-56px)] w-80 border-l bg-background/80 backdrop-blur md:block">
-            <div className="flex h-12 items-center justify-between px-4">
-              <div className="text-sm font-medium">Amigos</div>
-              <Button size="sm" variant="secondary"><UserPlus className="mr-1 size-4" />Adicionar</Button>
-            </div>
-            <ScrollArea className="h-[calc(100%-48px)] p-4">
-              <div className="space-y-3">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <Card key={i} className="glass-card">
-                    <CardContent className="flex items-center justify-between p-3">
-                      <div className="flex items-center gap-3">
-                        <div className="size-8 rounded-full bg-sidebar-ring/30" />
-                        <div>
-                          <div className="text-sm font-medium">Jogador{i + 1}</div>
-                          <div className="text-xs text-muted-foreground">Online</div>
-                        </div>
-                      </div>
-                      <MoreVertical className="size-4 text-muted-foreground" />
-                    </CardContent>
-                  </Card>
-                ))}
+                {/* Content with animated section switch */}
+                <div className="mt-6">
+                  <AnimatePresence mode="wait">
+                    {active === "home" && (
+                      <motion.div key="home" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }}>
+                        <HomeSection />
+                      </motion.div>
+                    )}
+                    {active === "play" && (
+                      <motion.div key="play" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.98 }} transition={{ duration: 0.25 }}>
+                        <PlaceholderSection title="Play" description="Escolha o perfil e inicie sua sessão com um clique." />
+                      </motion.div>
+                    )}
+                    {active === "servers" && (
+                      <motion.div key="servers" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.25 }}>
+                        <PlaceholderSection title="Servers" description="Navegue pelos seus servidores favoritos e junte-se rapidamente." />
+                      </motion.div>
+                    )}
+                    {active === "mods" && (
+                      <motion.div key="mods" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }}>
+                        <PlaceholderSection title="Mods" description="Gerencie e atualize seus mods com facilidade." />
+                      </motion.div>
+                    )}
+                    {active === "resources" && (
+                      <motion.div key="resources" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }}>
+                        <PlaceholderSection title="Resource Packs" description="Aplique pacotes para personalizar texturas e sons." />
+                      </motion.div>
+                    )}
+                    {active === "achievements" && (
+                      <motion.div key="achievements" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }}>
+                        <PlaceholderSection title="Achievements" description="Veja seu progresso e conquistas mais recentes." />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
-            </ScrollArea>
-          </aside>
+
+              {/* Aside */}
+              <aside className="hidden md:block">
+                <div className="sticky top-20">
+                  <div className="flex h-12 items-center justify-between px-1">
+                    <div className="text-sm font-medium">Amigos</div>
+                    <Button size="sm" variant="secondary"><UserPlus className="mr-1 size-4" />Adicionar</Button>
+                  </div>
+                  <div className="space-y-3">
+                    {Array.from({ length: 8 }).map((_, i) => (
+                      <Card key={i} className="glass-card">
+                        <CardContent className="flex items-center justify-between p-3">
+                          <div className="flex items-center gap-3">
+                            <div className="size-8 rounded-full bg-sidebar-ring/30" />
+                            <div>
+                              <div className="text-sm font-medium">Jogador{i + 1}</div>
+                              <div className="text-xs text-muted-foreground">Online</div>
+                            </div>
+                          </div>
+                          <MoreVertical className="size-4 text-muted-foreground" />
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
         </SidebarInset>
       </div>
     </SidebarProvider>
