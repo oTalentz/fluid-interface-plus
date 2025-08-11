@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Home, Play, Server, Package, Folder, Trophy, Info, MoreVertical, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   SidebarProvider,
   Sidebar,
@@ -100,7 +99,7 @@ export const AppShell = () => {
         <SidebarInset>
           {/* Top bar */}
           <div className="sticky top-0 z-10 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <div className="flex h-14 items-center gap-2 px-4">
+            <div className="mx-auto flex h-14 max-w-screen-2xl items-center gap-2 px-4">
               <SidebarTrigger />
               <div className="ml-auto flex items-center gap-2">
                 <Button variant="secondary" size="sm" className="hover-scale">Atualizações</Button>

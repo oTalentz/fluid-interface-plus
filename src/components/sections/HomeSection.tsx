@@ -45,7 +45,7 @@ export const HomeSection = () => {
       <section>
         <div className="mb-3 flex items-center justify-between">
           <h3 className="text-base font-semibold">Recent Servers</h3>
-          <a className="story-link text-sm text-muted-foreground" href="#">Ver todos</a>
+          <Button type="button" variant="link" className="text-sm text-muted-foreground p-0 h-auto">Ver todos</Button>
         </div>
         <div className="space-y-3">
           {servers.map((s, i) => (
